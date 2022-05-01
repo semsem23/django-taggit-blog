@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    {% block title %} {% endblock %}
+  </head>
+  <body> {% block content %}
+        <div class="main-left">
+			{% for Post in posts %}
+                <p><a href="{{ Post.get_absolute_url }}">{{ Post.title }}</a></p>
+				{% for tag in posts.Tags.all %}
+                     <a href="{% url 'taggin' tag.slug %}">{{ tag.name }}</a>
+                {% endfor %}
+            {% endfor %}
+	   </div>
+   </body> {% endblock %}
+</html>
